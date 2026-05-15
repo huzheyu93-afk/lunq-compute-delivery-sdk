@@ -1,0 +1,27 @@
+{
+  "name": "lunq-compute-delivery-sdk",
+  "version": "0.1.0",
+  "description": "Public-safe verifier and schema starter for LUNQ compute delivery receipts.",
+  "type": "module",
+  "bin": {
+    "lunq-verify-delivery": "src/verify-delivery.mjs"
+  },
+  "scripts": {
+    "demo": "node src/demo.mjs examples/delivery-session.json",
+    "verify": "node src/verify-delivery.mjs examples/delivery-session.json",
+    "check": "node --check src/demo.mjs && node --check src/verify-delivery.mjs && npm run demo && npm run verify"
+  },
+  "keywords": [
+    "lunq",
+    "compute-delivery",
+    "proof-of-compute",
+    "gpu",
+    "ai-compute",
+    "delivery-receipt",
+    "verification"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/lunq/delivery-session.schema.json",
+  "title": "LUNQ Compute Delivery Session",
+  "type": "object",
+  "required": ["schemaVersion", "sessionId", "supplier", "buyerWorkload", "events"],
+  "additionalProperties": true,
+  "properties": {
+    "schemaVersion": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string",
+      "minLength": 3
+    },
+    "network": {
+      "type": "string"
+    },
+    "supplier": {
+      "type": "object",
+      "required": ["supplierId", "region", "capacity"],
+      "properties": {
+        "supplierId": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "region": {
+          "type": "string"
+        },
+        "capacity": {
+          "type": "object",
+          "required": ["gpuClass", "gpuCount"],
+          "properties": {
+            "gpuClass": {
+              "type": "string"
+            },
+            "gpuCount": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "memoryGbPerGpu": {
+              "type": "number",
+              "minimum": 1
+            },
+            "supportedWorkloads": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "buyerWorkload": {
+      "type": "object",
+      "required": ["workloadId", "workloadClass"],
+      "properties": {
+        "workloadId": {
+          "type": "string"
+        },
+        "workloadClass": {
+          "type": "string"
+        },
+        "framework": {
+          "type": "string"
+        },
+        "requestedGpuSeconds": {
+          "type": "number",
+          "minimum": 0
+        },
+        "dataPolicy": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["eventId", "type", "timestamp", "actor"],
+        "properties": {
+          "eventId": {
+            "type": "string"
+          },
+          "type": {
+            "enum": ["workload_accepted", "job_started", "heartbeat", "job_completed", "job_failed", "job_cancelled"]
+          },
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "actor": {
+            "type": "string"
+          },
+          "measurements": {
+            "type": "object"
+          },
+          "details": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "publicSafety": {
+      "type": "object",
+      "properties": {
+        "containsProductionCredentials": {
+          "type": "boolean"
+        },
+        "containsCustomerData": {
+          "type": "boolean"
+        },
+        "containsPrivatePricing": {
+          "type": "boolean"
+        },
+        "containsWalletOrCustodyLogic": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

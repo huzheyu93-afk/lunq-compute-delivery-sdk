@@ -1,0 +1,85 @@
+{
+  "schemaVersion": "0.1.0",
+  "sessionId": "lunq-delivery-demo-001",
+  "network": "lunq-compute-demo",
+  "supplier": {
+    "supplierId": "supplier-demo-001",
+    "displayName": "Example GPU Lab",
+    "region": "us-west",
+    "capacity": {
+      "gpuClass": "NVIDIA L40S",
+      "gpuCount": 4,
+      "memoryGbPerGpu": 48,
+      "supportedWorkloads": ["inference", "batch"]
+    }
+  },
+  "buyerWorkload": {
+    "workloadId": "workload-demo-001",
+    "workloadClass": "inference",
+    "framework": "vLLM",
+    "requestedGpuSeconds": 7200,
+    "dataPolicy": ["synthetic sample only", "no private customer data"]
+  },
+  "events": [
+    {
+      "eventId": "evt-001",
+      "type": "workload_accepted",
+      "timestamp": "2026-05-16T00:00:00.000Z",
+      "actor": "supplier-demo-001",
+      "details": {
+        "acceptedGpuCount": 4,
+        "note": "Synthetic demo acceptance."
+      }
+    },
+    {
+      "eventId": "evt-002",
+      "type": "job_started",
+      "timestamp": "2026-05-16T00:01:00.000Z",
+      "actor": "supplier-demo-001",
+      "measurements": {
+        "gpuCount": 4,
+        "utilizationPercent": 82
+      }
+    },
+    {
+      "eventId": "evt-003",
+      "type": "heartbeat",
+      "timestamp": "2026-05-16T00:11:00.000Z",
+      "actor": "supplier-demo-001",
+      "measurements": {
+        "gpuCount": 4,
+        "utilizationPercent": 86
+      }
+    },
+    {
+      "eventId": "evt-004",
+      "type": "heartbeat",
+      "timestamp": "2026-05-16T00:21:00.000Z",
+      "actor": "supplier-demo-001",
+      "measurements": {
+        "gpuCount": 4,
+        "utilizationPercent": 84
+      }
+    },
+    {
+      "eventId": "evt-005",
+      "type": "job_completed",
+      "timestamp": "2026-05-16T00:31:00.000Z",
+      "actor": "supplier-demo-001",
+      "measurements": {
+        "gpuCount": 4,
+        "outputDigest": "sha256:demo-output-digest"
+      },
+      "details": {
+        "exitCode": 0,
+        "note": "Synthetic demo completion."
+      }
+    }
+  ],
+  "publicSafety": {
+    "containsProductionCredentials": false,
+    "containsCustomerData": false,
+    "containsPrivatePricing": false,
+    "containsWalletOrCustodyLogic": false
+  }
+}

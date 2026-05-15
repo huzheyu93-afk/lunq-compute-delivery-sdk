@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/lunq/delivery-receipt.schema.json",
+  "title": "LUNQ Compute Delivery Receipt",
+  "type": "object",
+  "required": [
+    "receiptVersion",
+    "sessionId",
+    "status",
+    "supplierId",
+    "workloadId",
+    "startedAt",
+    "completedAt",
+    "totalGpuSeconds",
+    "eventHash",
+    "verifier",
+    "settlementClaim"
+  ],
+  "properties": {
+    "receiptVersion": {
+      "type": "string"
+    },
+    "sessionId": {
+      "type": "string"
+    },
+    "status": {
+      "enum": ["completed", "failed", "cancelled", "incomplete"]
+    },
+    "supplierId": {
+      "type": "string"
+    },
+    "workloadId": {
+      "type": "string"
+    },
+    "startedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "totalGpuSeconds": {
+      "type": "number",
+      "minimum": 0
+    },
+    "eventHash": {
+      "type": "string"
+    },
+    "verifier": {
+      "type": "object",
+      "required": ["name", "version"],
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        }
+      }
+    },
+    "settlementClaim": {
+      "type": "object",
+      "required": ["unit", "amount", "mode", "note"],
+      "properties": {
+        "unit": {
+          "type": "string"
+        },
+        "amount": {
+          "type": "number"
+        },
+        "mode": {
+          "enum": ["mock_only"]
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}
