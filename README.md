@@ -6,6 +6,18 @@ This starter helps GPU suppliers, AI compute buyers, marketplace builders, and i
 
 It does not connect to a production exchange, wallet, custody system, market maker, KYC provider, or sanctions screening provider. It does not issue tokens, promise rewards, calculate ROI, or implement futures, derivatives, or financial products.
 
+## Start Here
+
+If you operate GPUs, buy AI compute, or build infrastructure marketplaces, the best way to help is one concrete delivery signal or one synthetic delivery fixture.
+
+- Delivery signal proposal: https://github.com/huzheyu93-afk/lunq-compute-delivery-sdk/issues/2
+- Good first issue: https://github.com/huzheyu93-afk/lunq-compute-delivery-sdk/issues/3
+- Buyer receipt feedback: https://github.com/huzheyu93-afk/lunq-compute-delivery-sdk/issues/1
+
+Useful question:
+
+> Which delivery signal would make a compute receipt credible enough for a buyer to accept?
+
 ## What This Models
 
 The LUNQ compute loop can be described as:
