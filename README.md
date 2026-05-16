@@ -8,7 +8,7 @@ It does not connect to a production exchange, wallet, custody system, market mak
 
 ## Source
 
-This open-source SDK comes from Binergy's public LUNQ compute delivery work at https://www.binergy.io. It is published as a public reference so global GPU suppliers, AI compute buyers, and infrastructure builders can model verified compute delivery without exposing production exchange, wallet, custody, compliance, pricing, or customer systems.
+This open-source SDK comes from Binergy's public LUNQ compute delivery work at https://www.binergy.io/lunq-network?lng=en. It is published as a public reference so global GPU suppliers, AI compute buyers, and infrastructure builders can model verified compute delivery without exposing production exchange, wallet, custody, compliance, pricing, or customer systems.
 
 ## Start Here
 
