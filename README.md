@@ -78,6 +78,7 @@ Expected output:
 ## Files
 
 - `examples/delivery-session.json` - synthetic end-to-end session
+- `examples/batch-inference-session.json` - synthetic batch inference delivery session
 - `schemas/delivery-session.schema.json` - event log schema
 - `schemas/delivery-receipt.schema.json` - receipt schema
 - `src/verify-delivery.mjs` - verifier module and CLI

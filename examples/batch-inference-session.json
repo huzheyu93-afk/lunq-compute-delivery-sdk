@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "0.1.0",
+  "sessionId": "lunq-batch-inference-demo-001",
+  "network": "lunq-compute-demo",
+  "fixtureNote": "Synthetic batch inference session showing how a supplier can report steady GPU utilization and a public-safe output digest for an offline media classification workload.",
+  "supplier": {
+    "supplierId": "supplier-fixture-batch-001",
+    "displayName": "Synthetic Batch GPU Pool",
+    "region": "eu-central",
+    "capacity": {
+      "gpuClass": "NVIDIA A100",
+      "gpuCount": 8,
+      "memoryGbPerGpu": 80,
+      "supportedWorkloads": ["batch_inference", "embeddings"]
+    }
+  },
+  "buyerWorkload": {
+    "workloadId": "workload-fixture-batch-001",
+    "workloadClass": "batch_inference",
+    "framework": "PyTorch",
+    "requestedGpuSeconds": 21600,
+    "dataPolicy": [
+      "synthetic media metadata only",
+      "no customer identifiers",
+      "no production API URLs"
+    ]
+  },
+  "events": [
+    {
+      "eventId": "batch-evt-001",
+      "type": "workload_accepted",
+      "timestamp": "2026-05-16T10:00:00.000Z",
+      "actor": "supplier-fixture-batch-001",
+      "details": {
+        "acceptedGpuCount": 8,
+        "note": "Supplier accepted a synthetic batch inference workload."
+      }
+    },
+    {
+      "eventId": "batch-evt-002",
+      "type": "job_started",
+      "timestamp": "2026-05-16T10:02:00.000Z",
+      "actor": "supplier-fixture-batch-001",
+      "measurements": {
+        "gpuCount": 8,
+        "utilizationPercent": 78,
+        "processedItems": 0
+      }
+    },
+    {
+      "eventId": "batch-evt-003",
+      "type": "heartbeat",
+      "timestamp": "2026-05-16T10:17:00.000Z",
+      "actor": "supplier-fixture-batch-001",
+      "measurements": {
+        "gpuCount": 8,
+        "utilizationPercent": 83,
+        "processedItems": 12000
+      }
+    },
+    {
+      "eventId": "batch-evt-004",
+      "type": "heartbeat",
+      "timestamp": "2026-05-16T10:32:00.000Z",
+      "actor": "supplier-fixture-batch-001",
+      "measurements": {
+        "gpuCount": 8,
+        "utilizationPercent": 81,
+        "processedItems": 24000
+      }
+    },
+    {
+      "eventId": "batch-evt-005",
+      "type": "job_completed",
+      "timestamp": "2026-05-16T10:47:00.000Z",
+      "actor": "supplier-fixture-batch-001",
+      "measurements": {
+        "gpuCount": 8,
+        "processedItems": 36000,
+        "outputDigest": "sha256:synthetic-batch-inference-output"
+      },
+      "details": {
+        "exitCode": 0,
+        "note": "Synthetic completion event with no customer data or private pricing."
+      }
+    }
+  ],
+  "publicSafety": {
+    "containsProductionCredentials": false,
+    "containsCustomerData": false,
+    "containsPrivatePricing": false,
+    "containsWalletOrCustodyLogic": false
+  }
+}
